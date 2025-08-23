@@ -1,0 +1,38 @@
+# To show the docker version information
+    docker --version
+# To login to Docker hub
+    docker login
+# To Login with user id of docker hub repo
+docker login -u <username>
+
+# To Pull image
+    docker pull <name of image>
+example: docker pull eglitmyk/demoappclinic
+
+# To view Image in local docker host
+    docker images
+
+# To create containers
+    docker run --name <name of containter like app1> -p 80:80 -d <imagename>
+Example : docker run --name container1 -p 80:80 -d eglitmyk/demoappclinic
+# To create containers with different port
+    docker run --name container2 -p 8080:80 -d eglitmyk/mediplusapp
+
+# To view running container
+    docker ps
+
+# To Stop container
+    docker stop <name of container>
+
+# To Start container
+    docker start <name of container>
+
+# To View all containers ( running or stop)
+    docker ps -a
+
+# To Delete the container
+    docker stop <name of container>
+    docker rm <name of container>
+
+# To log out from Docker hub
+    docker logout

@@ -1,0 +1,31 @@
+1. Pre-requisite
+	a. Azure CLI should be installed
+	 > az version   #to confirm if it is installed
+
+	b. Kubectl should be installed   # it is utility to interact with Kubernetes
+	> az aks install-cli   #command to install kubectl
+	> kubectl version      # command to verify if Kubectl is installed or not
+
+2. Connect to AKS
+
+	a. Login to Azure 
+	>  az login --use-device-code
+	b. To verify if you are logged in Azure
+	> az account show
+	c. Set the cluster subscription
+	> az account set --subscription "subscription-id"
+	d. Download cluster credentials
+	> az aks get-credentials --resource-group "name-of-resourcegrp" --name "name-of-aks" --overwrite-existing
+	e. Sample command to verify if you are connected to AKS
+	>  kubectl get deployments --all-namespaces=true
+
+3. Create a Pod
+	kubectl run <pod-name> --image=<image-name> --restart=Never
+	e.g >kubectl run pod1 --image=nginx --restart=Never
+	e.g >kubectl run pod2 --image=eglitmyk/mediplusapp --restart=Never
+
+4. How to access the app running inside pod/container
+	kubectl expose pod <pod-name> --type=LoadBalancer --name=<service-name> --port=<port> --target-port=<target-port>
+	e.g >kubectl expose pod pod1 --type=LoadBalancer --name=lbserviceforpod1 --port=80 --target-port=80
+	e.g >kubectl expose pod pod2 --type=LoadBalancer --name=lbserviceforpod2 --port=80 --target-port=80 
+
